@@ -1,5 +1,6 @@
 import { render, Component } from 'inferno';
 import Reviews from '../models/Reviews.class';
+import style from './ReviewsWall.scss';
 
 export default class MyComponent extends Component {
   constructor(props) {
@@ -8,12 +9,6 @@ export default class MyComponent extends Component {
     this.state = {
       reviewItems: []
     };
-  }
-  componentWillMount() {
-    this.getReviewItems()
-      .then(reviewItems => {
-        this.setState({ reviewItems })
-      });
   }
   render() {
     return (
@@ -36,6 +31,12 @@ export default class MyComponent extends Component {
         </table>
       </div>
     );
+  }
+  componentWillMount() {
+    this.getReviewItems()
+      .then(reviewItems => {
+        this.setState({ reviewItems })
+      });
   }
   async getReviewItems() {
     const review = new Reviews();

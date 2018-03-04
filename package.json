@@ -10,8 +10,11 @@
     "rollup": "^0.56.3",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-commonjs": "^8.3.0",
+    "rollup-plugin-livereload": "^0.6.0",
     "rollup-plugin-node-resolve": "^3.0.3",
-    "rollup-plugin-replace": "^2.0.0"
+    "rollup-plugin-replace": "^2.0.0",
+    "rollup-plugin-scss": "^0.4.0",
+    "rollup-plugin-serve": "^0.4.2"
   },
   "dependencies": {
     "dexie": "^2.0.2",

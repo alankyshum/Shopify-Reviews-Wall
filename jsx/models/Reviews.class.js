@@ -15,7 +15,7 @@ export default class Reviews {
     const count = await cachedReviews.count();
     if (count) return cachedReviews;
 
-    const reviews = await this.getAllReviews();
+    const reviews = await this.getAllFromAPI();
     const reviewsKeys = Object.values(reviews)
       .map(review => `${review.author}-${review.date}`);
 
