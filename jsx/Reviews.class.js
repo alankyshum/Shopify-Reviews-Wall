@@ -1,4 +1,4 @@
-class Reviews {
+export default class Reviews {
   initDB() {
     this.db = new Dexie("ShopifyReviews-Compass");
     this.db.version(1).stores({

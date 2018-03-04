@@ -1,3 +1,5 @@
+import Reviews from './Reviews.class';
+
 showReviews();
 
 async function showReviews() {
