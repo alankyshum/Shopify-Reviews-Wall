@@ -1,5 +1,7 @@
+import Dexie from 'dexie';
+
 export default class Reviews {
-  initDB() {
+  init() {
     this.db = new Dexie("ShopifyReviews-Compass");
     this.db.version(1).stores({
       reviews: "++, [author+date], content, ratings"
@@ -7,7 +9,7 @@ export default class Reviews {
     this.db.open();
   }
 
-  async getReviews(db) {
+  async getAll() {
     const cachedReviews = this.db.reviews;
 
     const count = await cachedReviews.count();
@@ -26,7 +28,7 @@ export default class Reviews {
       });
   }
 
-  async getAllReviews() {
+  async getAllFromAPI() {
     return fetch('https://api.apify.com/v1/Ew7iFzrjYuf2jHZCY/crawlers/KFxpYZqQTrWuEnpd2/lastExec/results?token=ER5TAaboZcE8jzeug43Nrryp3&hideUrl=1&simplified=1')
       .then(res => res.json());
   }
