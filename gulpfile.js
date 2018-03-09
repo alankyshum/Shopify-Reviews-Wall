@@ -8,7 +8,7 @@ gulp.task('build:js', () =>
   rollup.rollup(rollupOptions.inputOptions())
     .then(bundle => bundle.generate(rollupOptions.outputOptions))
     .then(gen => {
-      return file('main.js', gen.code, {src: true})
+      return file('App.js', gen.code, {src: true})
         .pipe(gulp.dest('js/'))
     })
 );
@@ -21,7 +21,7 @@ gulp.task('dev', function() {
   return rollup.rollup(rollupOptions.inputOptions('dev'))
     .then(bundle => bundle.generate(rollupOptions.outputOptions))
     .then(gen => {
-      return file('main.js', gen.code, {src: true})
+      return file('App.js', gen.code, {src: true})
         .pipe(gulp.dest('js/'))
     })
 });

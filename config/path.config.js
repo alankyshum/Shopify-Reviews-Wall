@@ -1,6 +1,6 @@
 module.exports = {
   js: {
-    main: 'jsx/main.jsx',
+    main: 'jsx/App.jsx',
     glob: 'jsx/**/*'
   }
 }
