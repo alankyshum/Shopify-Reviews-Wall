@@ -13,7 +13,6 @@ export default class MyComponent extends Component {
   render() {
     return (
       <div class="ReviewsWall">
-        <header class="uk-heading-primary">Shopify Reviews - Compass</header>
         <article class="uk-overflow-auto">
           <table class="uk-table uk-table-striped uk-table-hover uk-table-small">
             <thead>

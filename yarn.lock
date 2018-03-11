@@ -2150,6 +2150,10 @@ indent-string@^2.1.0:
   dependencies:
     repeating "^2.0.0"
 
+inferno-create-class@^4.0.8:
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/inferno-create-class/-/inferno-create-class-4.0.8.tgz#b75bfcb16c245231b7aef691f53ca9459b1acdff"
+
 inferno-router@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/inferno-router/-/inferno-router-4.0.8.tgz#403156cf494c149e30e6f4c90eec98dfd3364556"
