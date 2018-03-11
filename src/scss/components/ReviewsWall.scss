@@ -1,0 +1,8 @@
+.ReviewsWall {
+  --gutter_padding: 20px;
+
+  header {
+    margin-top: var(--gutter_padding);
+    margin-bottom: var(--gutter_padding);
+  }
+}

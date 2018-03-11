@@ -13,7 +13,7 @@ class App extends Component {
             <div class="uk-navbar-left">
               <ul class="uk-navbar-nav">
                 <NavLinkLi activeClassName="uk-active" to="/">Home</NavLinkLi>
-                <NavLinkLi activeClassName="uk-active" to="/raw">Raw Table</NavLinkLi>
+                <NavLinkLi activeClassName="uk-active" to="/raw">Raw Reviews</NavLinkLi>
               </ul>
             </div>
           </nav>

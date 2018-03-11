@@ -13,6 +13,9 @@ export default class MyComponent extends Component {
   render() {
     return (
       <div class="ReviewsWall">
+        <header>
+          <h2 class="uk-heading-line uk-text-center"><span>Raw Reviews</span></h2>
+        </header>
         <article class="uk-overflow-auto">
           <table class="uk-table uk-table-striped uk-table-hover uk-table-small">
             <thead>
