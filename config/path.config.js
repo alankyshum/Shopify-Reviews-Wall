@@ -4,7 +4,10 @@ const srcFolder = 'src';
 const jsxFolder = path.join(srcFolder, 'jsx');
 
 export default {
-  server: path.join(srcFolder, 'server.js'),
+  server: {
+    src: path.join(srcFolder, 'server.js'),
+    dest: path.join('server.js'),
+  },
   js: {
     main: path.join(jsxFolder, 'App.jsx'),
     glob: path.join(jsxFolder, '**', '*'),

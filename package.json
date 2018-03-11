@@ -2,7 +2,8 @@
   "name": "shopify_kpi_screen",
   "scripts": {
     "start": "node server.js",
-    "build": "gulp"
+    "build": "gulp",
+    "dev": "gulp watch"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -15,6 +16,7 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.1",
     "gulp-file": "^0.4.0",
+    "gulp-nodemon": "^2.2.1",
     "rollup": "^0.56.3",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-commonjs": "^8.3.0",
