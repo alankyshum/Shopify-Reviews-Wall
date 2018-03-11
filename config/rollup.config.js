@@ -1,31 +1,21 @@
-const babel = require('rollup-plugin-babel');
-const resolve = require('rollup-plugin-node-resolve');
-const commonjs = require('rollup-plugin-commonjs');
-const replace = require('rollup-plugin-replace');
-const pathsConfig = require('./path.config');
-// dev server
-const serve = require('rollup-plugin-serve');
-const livereload = require('rollup-plugin-livereload');
-// stylesheets
-const scss = require('rollup-plugin-scss');
+import babel from 'rollup-plugin-babel';
+import resolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
+import replace from 'rollup-plugin-replace';
+import scss from 'rollup-plugin-scss';
+import pathConfig from './path.config';
+import { frontend as babelConfig } from './babel.config';
 
 module.exports = {
-  inputOptions(env) {
+  inputOptions() {
     const options = {
-      input: pathsConfig.js.main,
+      input: pathConfig.js.main,
       plugins: [
-        scss({
-          output: 'css/main.css'
-        }),
+        scss({ output: pathConfig.css.dest }),
         resolve({
           extensions: ['.js', '.jsx']
         }),
-        babel({
-          presets: [ [ "es2015-rollup" ] ],
-          plugins: ["babel-plugin-syntax-jsx", ["babel-plugin-inferno", {"imports": true}]],
-          babelrc: false,
-          exclude: 'node_modules/**'
-        }),
+        babel(babelConfig),
         commonjs(),
         replace({
           'process.env.NODE_ENV': JSON.stringify("production")
