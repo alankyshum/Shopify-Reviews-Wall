@@ -15,8 +15,10 @@ export default class Reviews {
 
     const count = await cachedReviews.count();
     const validCache = Sessions.isDBcacheValid();
+
     if (count && validCache) {
-      return this.sortReviewRecords(cachedReviews);
+      const cachedReviewsArray = await cachedReviews.toArray(reviews => reviews);
+      return this.sortReviewRecords(cachedReviewsArray);
     } else {
       const reviews = await this.getAllFromAPI();
       this.cacheDB(reviews);

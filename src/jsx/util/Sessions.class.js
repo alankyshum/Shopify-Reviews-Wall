@@ -2,19 +2,18 @@ import moment from 'moment';
 
 export default class Sessions {
   static setCachedDBexpiration() {
+    debugger;
     this.deleteCookie("compass_reviews_cachedDB");
     this.setCookie('compass_reviews_cachedDB');
   }
   static isDBcacheValid() {
-    return /compass_reviews_cachedDB/.test(document.cookies);
+    return /compass_reviews_cachedDB/.test(document.cookie);
   }
   static deleteCookie(name) {
-    window.document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    window.document.cookie = `${name}=;`;
   }
-  static setCookie(name, value, expires) {
+  static setCookie(name, value) {
     value = value || true;
-    expires = expires || moment().subtract(1, 'day').toString();
-
-    window.document.cookie = `${name}=${value}; expires=${expires}; path=/`;
+    window.document.cookie = `${name}=${value};`;
   }
 }
