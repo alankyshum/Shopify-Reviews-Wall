@@ -1,5 +1,6 @@
 import { render, Component } from 'inferno';
 import Reviews from '../models/Reviews.class';
+import moment from 'moment';
 import '../../scss/components/RawData.scss';
 
 export default class MyComponent extends Component {
@@ -20,7 +21,7 @@ export default class MyComponent extends Component {
           {this.state.reviewItems.map(reviewItem => (
             <tr>
               <td>{ reviewItem.author }</td>
-              <td>{ this.parseDate(reviewItem.date) }</td>
+              <td>{ moment(reviewItem.date).fromNow() }</td>
               <td>{ reviewItem.content }</td>
               <td>{ reviewItem.ratings }</td>
             </tr>
@@ -39,7 +40,7 @@ export default class MyComponent extends Component {
     const review = new Reviews();
     await review.init()
     const reviewsList = await review.getAll();
-    return reviewsList.toArray(reviewItems => reviewItems);
+    return reviewsList;
   }
   parseDate(dateString) {
     return (new Date(dateString)).toLocaleDateString();
