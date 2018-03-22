@@ -42,7 +42,7 @@ export default class Reviews {
   }
 
   sortReviewRecords(reviewRecords) {
-    return reviewRecords.sort((r1, r2) => new Date(r1) - new Date(r2));
+    return reviewRecords.sort((r1, r2) => ( new Date(r2.date) - new Date(r1.date) ));
   }
 }
 
