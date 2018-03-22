@@ -2,7 +2,8 @@ import { render, Component } from "inferno";
 import { BrowserRouter, Route } from "inferno-router";
 import UIKit from "uikit";
 import NavLinkLi from './components/NavLinkLi';
-import MainApp from "./pages/MainApp";
+import RawData from "./pages/RawData.jsx";
+import HomeWall from "./pages/HomeWall.jsx";
 
 class App extends Component {
   render() {
@@ -19,7 +20,8 @@ class App extends Component {
           </nav>
 
           <div className="uk-container">
-            <Route exact path="/raw" component={MainApp} />
+            <Route exact path="/" component={HomeWall} />
+            <Route exact path="/raw" component={RawData} />
           </div>
         </div>
       </BrowserRouter>
