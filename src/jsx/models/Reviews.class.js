@@ -20,15 +20,17 @@ export default class Reviews {
       const cachedReviewsArray = await cachedReviews.toArray(reviews => reviews);
       return this.sortReviewRecords(cachedReviewsArray);
     } else {
-      const reviews = await this.getAllFromAPI();
+      let reviews = await this.getAllFromAPI();
+      reviews = reviews.filter(record => !!record.date);
       this.cacheDB(reviews);
-      return this.sortReviewRecords(reviews);;
+      return this.sortReviewRecords(reviews);
     }
   }
 
   async getAllFromAPI() {
-    return fetch('https://api.apify.com/v1/Ew7iFzrjYuf2jHZCY/crawlers/KFxpYZqQTrWuEnpd2/lastExec/results?token=ER5TAaboZcE8jzeug43Nrryp3&hideUrl=1&simplified=1')
-      .then(res => res.json());
+    let rawRecords = await fetch('https://api.apify.com/v1/Ew7iFzrjYuf2jHZCY/crawlers/KFxpYZqQTrWuEnpd2/lastExec/results?token=ER5TAaboZcE8jzeug43Nrryp3&hideUrl=1&simplified=1');
+    rawRecords = await rawRecords.json();
+    return rawRecords.filter(record => !record.value);
   }
 
   async cacheDB(reviews) {
@@ -42,7 +44,8 @@ export default class Reviews {
   }
 
   sortReviewRecords(reviewRecords) {
-    return reviewRecords.sort((r1, r2) => ( new Date(r2.date) - new Date(r1.date) ));
+    return reviewRecords
+      .sort((r1, r2) => ( (new Date(r2.date)) - (new Date(r1.date)) ));
   }
 }
 
