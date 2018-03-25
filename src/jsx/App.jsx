@@ -2,8 +2,9 @@ import { render, Component } from "inferno";
 import { BrowserRouter, Route } from "inferno-router";
 import UIKit from "uikit";
 import NavLinkLi from './components/NavLinkLi';
-import RawData from "./pages/RawData.jsx";
-import HomeWall from "./pages/HomeWall.jsx";
+import HomeWall from "./pages/HomeWall";
+import RawData from "./pages/RawData";
+import Timeline from "./pages/Timeline";
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
               <ul class="uk-navbar-nav">
                 <NavLinkLi activeClassName="uk-active" to="/">Home</NavLinkLi>
                 <NavLinkLi activeClassName="uk-active" to="/raw">Raw Reviews</NavLinkLi>
+                <NavLinkLi activeClassName="uk-active" to="/timeline">Live Feed</NavLinkLi>
               </ul>
             </div>
           </nav>
@@ -22,14 +24,11 @@ class App extends Component {
           <div className="uk-container">
             <Route exact path="/" component={HomeWall} />
             <Route exact path="/raw" component={RawData} />
+            <Route exact path="/timeline" component={Timeline} />
           </div>
         </div>
       </BrowserRouter>
     );
-  }
-  isActiveNav(match, location) {
-    console.log(match);
-    console.log(location);
   }
 }
 

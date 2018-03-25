@@ -38,7 +38,6 @@ export default class MyComponent extends Component {
   }
   async getReviewItems() {
     const review = new Reviews();
-    await review.init()
     const reviewsList = await review.getAll();
     return reviewsList;
   }

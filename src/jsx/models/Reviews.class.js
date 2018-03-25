@@ -2,7 +2,7 @@ import Dexie from 'dexie';
 import Sessions from '../util/Sessions.class';
 
 export default class Reviews {
-  init() {
+  constructor() {
     this.db = new Dexie("ShopifyReviews-Compass");
     this.db.version(1).stores({
       reviews: "++, [author+date], content, ratings"
@@ -10,21 +10,22 @@ export default class Reviews {
     this.db.open();
   }
 
-  async getAll() {
+  async getAll(sorted = true) {
     const cachedReviews = this.db.reviews;
 
     const count = await cachedReviews.count();
     const validCache = Sessions.isDBcacheValid();
 
+    let resultReviewsList = [];
     if (count && validCache) {
-      const cachedReviewsArray = await cachedReviews.toArray(reviews => reviews);
-      return this.sortReviewRecords(cachedReviewsArray);
+      resultReviewsList = await cachedReviews.toArray(reviews => reviews);
     } else {
-      let reviews = await this.getAllFromAPI();
-      reviews = reviews.filter(record => !!record.date);
-      this.cacheDB(reviews);
-      return this.sortReviewRecords(reviews);
+      resultReviewsList = await this.getAllFromAPI();
+      resultReviewsList = resultReviewsList.filter(record => !!record.date);
+      this.cacheDB(resultReviewsList);
     }
+
+    return sorted ? this.sortReviewRecords(resultReviewsList) : resultReviewsList;
   }
 
   async getAllFromAPI() {
