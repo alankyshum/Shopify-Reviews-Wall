@@ -7,6 +7,7 @@ export default class MainApp extends Component {
 
     this.state = {
       timelineCursorPos: 0,
+      timelineTranslate: 0,
       timeline: {
         minDateValue: 0,
         maxDateValue: 0
@@ -23,14 +24,16 @@ export default class MainApp extends Component {
           defaultValue={ this.state.timelineCursorPos }
           onChange={ this.timelineDrag.bind(this) } />
         <span>{ (new Date(this.state.timelineCursorPos)).toString() }</span>
-        {
-          this.state.reviews.map(review => (
-            <div>
-              <h2>{ review.content }</h2>
-              <small>{ review.date }</small>
-            </div>
-          ))
-        }
+        <div className="timeline-wrapper" style={{ transform: `translateY(${this.state.timelineTranslate}px)`}}>
+          {
+            this.state.reviews.map(review => (
+              <div>
+                <h2>{ review.content }</h2>
+                <small>{ review.date }</small>
+              </div>
+            ))
+          }
+        </div>
       </div>
     );
   }
@@ -52,5 +55,8 @@ export default class MainApp extends Component {
   }
   timelineDrag(event) {
     this.setState({ timelineCursorPos: parseInt(event.target.value) });
+    const totalTimelineHeight = document.getElementsByClassName('timeline-wrapper')[0].clientHeight;
+    const timelineTranslate = -1 * totalTimelineHeight * (event.target.value - this.state.timeline.minDateValue) / (this.state.timeline.maxDateValue - this.state.timeline.minDateValue);
+    this.setState({ timelineTranslate: timelineTranslate });
   }
 }
