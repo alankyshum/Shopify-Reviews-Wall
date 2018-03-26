@@ -16,7 +16,12 @@ module.exports = {
           extensions: ['.js', '.jsx']
         }),
         babel(babelConfig),
-        commonjs(),
+        commonjs({
+          namedExports: {
+            'node_modules/react/react.js': ['Children', 'Component', 'PropTypes', 'createElement'],
+            'node_modules/react-dom/index.js': ['render']
+          }
+        }),
         replace({
           'process.env.NODE_ENV': JSON.stringify("production")
         }),
@@ -28,6 +33,9 @@ module.exports = {
   outputOptions: {
     format: 'umd',
     name: 'shopifyReviewWall',
-    sourcemap: true
+    sourcemap: true,
+    globals: {
+      react: 'react'
+    }
   }
 }

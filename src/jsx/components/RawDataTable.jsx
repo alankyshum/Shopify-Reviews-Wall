@@ -1,4 +1,4 @@
-import { render, Component } from 'inferno';
+import { render, Component } from 'react';
 import Reviews from '../models/Reviews.class';
 import moment from 'moment';
 import '../../scss/components/RawData.scss';

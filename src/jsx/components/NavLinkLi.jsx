@@ -1,6 +1,6 @@
-import { render } from "inferno";
-import { createClass } from 'inferno-create-class';
-import { Link } from "inferno-router";
+import { render } from "react";
+import { createClass } from 'react-create-class';
+import { Link } from "react-router";
 
 export default createClass({
   render() {

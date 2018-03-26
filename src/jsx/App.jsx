@@ -1,15 +1,15 @@
-import { render, Component } from "inferno";
-import { BrowserRouter, Route } from "inferno-router";
+import { render } from "react-dom";
+import { Router, Route } from "react-router";
 import UIKit from "uikit";
 import NavLinkLi from './components/NavLinkLi';
 import HomeWall from "./pages/HomeWall";
 import RawData from "./pages/RawData";
 import Timeline from "./pages/Timeline";
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
-      <BrowserRouter>
+      <Router>
         <div>
           <nav class="uk-navbar-container" uk-navbar>
             <div class="uk-navbar-left">
@@ -27,7 +27,7 @@ class App extends Component {
             <Route exact path="/timeline" component={Timeline} />
           </div>
         </div>
-      </BrowserRouter>
+      </Router>
     );
   }
 }

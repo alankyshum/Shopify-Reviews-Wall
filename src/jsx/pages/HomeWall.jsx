@@ -1,4 +1,4 @@
-import { Component } from 'inferno';
+import { Component } from 'react';
 import ReviewsWall from '../components/ReviewsWall';
 
 export default class MainApp extends Component {

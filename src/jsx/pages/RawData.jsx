@@ -1,4 +1,4 @@
-import { Component } from 'inferno';
+import { Component } from 'react';
 import RawDataTable from '../components/RawDataTable';
 
 export default class MainApp extends Component {
