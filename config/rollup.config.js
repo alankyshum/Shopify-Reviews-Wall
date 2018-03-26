@@ -12,19 +12,15 @@ module.exports = {
       input: pathConfig.js.main,
       plugins: [
         scss({ output: pathConfig.css.dest }),
-        resolve({
+        resolve(),
+        commonjs({
+          include: 'node_modules/**',
           extensions: ['.js', '.jsx']
         }),
         babel(babelConfig),
-        commonjs({
-          namedExports: {
-            'node_modules/react/react.js': ['Children', 'Component', 'PropTypes', 'createElement'],
-            'node_modules/react-dom/index.js': ['render']
-          }
-        }),
         replace({
           'process.env.NODE_ENV': JSON.stringify("production")
-        }),
+        })
       ]
     };
 

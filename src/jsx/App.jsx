@@ -1,5 +1,5 @@
-import { render } from "react-dom";
 import { Router, Route } from "react-router";
+import 'react-dom';
 import UIKit from "uikit";
 import NavLinkLi from './components/NavLinkLi';
 import HomeWall from "./pages/HomeWall";

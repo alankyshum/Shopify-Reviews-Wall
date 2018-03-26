@@ -1,7 +1,6 @@
-import { Component } from 'react';
 import ReviewsWall from '../components/ReviewsWall';
 
-export default class MainApp extends Component {
+export default class MainApp extends React.Component {
   render() {
     return (
       <div>

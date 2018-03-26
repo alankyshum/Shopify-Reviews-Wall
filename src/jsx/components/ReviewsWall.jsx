@@ -1,9 +1,8 @@
-import { render, Component } from 'react';
 import moment from 'moment';
 import Reviews from '../models/Reviews.class';
 import '../../scss/components/RawData.scss';
 
-export default class MyComponent extends Component {
+export default class MyComponent extends React.Component {
   constructor(props) {
     super(props);
 

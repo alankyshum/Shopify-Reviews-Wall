@@ -24,6 +24,7 @@
     "rollup-plugin-scss": "^0.4.0"
   },
   "dependencies": {
+    "babel-preset-stage-2": "^6.24.1",
     "dexie": "^2.0.2",
     "koa": "^2.5.0",
     "koa-router": "^7.4.0",
@@ -31,9 +32,9 @@
     "moment": "^2.21.0",
     "rc-slider": "^8.6.1",
     "react": "^16.2.0",
-    "react-create-class": "^1.0.0",
     "react-dom": "^16.2.0",
     "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "uikit": "^3.0.0-beta.40"
   }
 }

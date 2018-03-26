@@ -1,10 +1,9 @@
-import { Component } from 'react';
 import Slider from 'rc-slider';
 import Reviews from '../models/Reviews.class';
-import '../../scss/pages/Timeline.scss';
-import 'rc-slider/assets/index.css';
+// import '../../scss/pages/Timeline.scss';
+// import 'rc-slider/assets/index.css';
 
-export default class MainApp extends Component {
+export default class MainApp extends React.Component {
   constructor(props) {
     super(props);
 

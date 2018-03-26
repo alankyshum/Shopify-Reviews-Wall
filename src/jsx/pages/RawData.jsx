@@ -1,7 +1,6 @@
-import { Component } from 'react';
 import RawDataTable from '../components/RawDataTable';
 
-export default class MainApp extends Component {
+export default class MainApp extends React.Component {
   render() {
     return (
       <div class="RawData">
