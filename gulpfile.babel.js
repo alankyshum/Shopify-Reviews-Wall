@@ -24,6 +24,7 @@ gulp.task('build:server', function() {
 
 gulp.task('watch', function() {
   gulp.watch(pathConfig.js.glob, ['build:js']);
+  gulp.watch(pathConfig.css.glob, ['build:js']);
 
   nodemon({
     script: pathConfig.server.dest,
