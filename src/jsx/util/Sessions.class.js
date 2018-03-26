@@ -2,7 +2,6 @@ import moment from 'moment';
 
 export default class Sessions {
   static setCachedDBexpiration() {
-    debugger;
     this.deleteCookie("compass_reviews_cachedDB");
     this.setCookie('compass_reviews_cachedDB');
   }

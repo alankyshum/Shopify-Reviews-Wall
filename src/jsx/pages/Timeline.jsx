@@ -27,9 +27,10 @@ export default class MainApp extends Component {
         <div className="timeline-wrapper">
           {
             this.state.reviews.map(review => (
-              <div>
-                <h2>{ review.content }</h2>
-                <small>{ review.date }</small>
+              <div class="uk-card uk-card-default uk-card-body uk-width-1-2@l uk-width-1-1@s">
+                <div class="uk-card-badge uk-label">{ review.ratings }</div>
+                <h3 class="uk-card-title">{ review.author } <small>{ (new Date(review.date)).toString() }</small></h3>
+                <p>{ review.content }</p>
               </div>
             ))
           }
@@ -71,10 +72,10 @@ export default class MainApp extends Component {
   calculateTranslatePosition(sourcePos, toTargetPos) {
     switch (toTargetPos) {
       case 'window': {
-        return document.body.clientHeight * (sourcePos - this.state.timeline.minDateValue) / (this.state.timeline.maxDateValue - this.state.timeline.minDateValue);
+        return document.body.clientHeight * (this.state.timeline.maxDateValue - sourcePos) / (this.state.timeline.maxDateValue - this.state.timeline.minDateValue);
       }
       case 'timeline': {
-        return this.state.timeline.minDateValue + (this.state.timeline.maxDateValue - this.state.timeline.minDateValue) * (sourcePos / document.body.clientHeight);
+        return this.state.timeline.maxDateValue - (this.state.timeline.maxDateValue - this.state.timeline.minDateValue) * (sourcePos / document.body.clientHeight);
       }
     }
   }
