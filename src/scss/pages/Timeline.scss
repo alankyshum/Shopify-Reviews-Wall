@@ -1,23 +1,4 @@
 .timeline {
   .timeline {
-    &-slider {
-      position: fixed;
-      top: calc(100vh - 30px);
-      left: calc(100vw - 30px);
-      transform: rotate(-90deg);
-      transform-origin: left;
-      width: calc(100vh - 30px);
-    }
-    &-indicator {
-      background-color: #000;
-      color: #fff;
-      padding: 10px 15px;
-      border-radius: 5px;
-      position: fixed;
-      right: 40px;
-      top: 40px;
-      z-index: 99;
-      opacity: .7;
-    }
   }
 }
