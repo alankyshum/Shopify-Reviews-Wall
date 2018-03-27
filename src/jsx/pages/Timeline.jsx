@@ -1,4 +1,5 @@
 import { Component } from 'inferno';
+import moment from 'moment';
 import Reviews from '../models/Reviews.class';
 import '../../scss/pages/Timeline.scss';
 
@@ -7,6 +8,7 @@ export default class MainApp extends Component {
     super(props);
 
     this.state = {
+      cursorPos: 0,
       timelineCursorPos: 0,
       timeline: {
         minDateValue: 0,
@@ -17,13 +19,13 @@ export default class MainApp extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="timeline">
         <input className="timeline-slider" type="range" step="1"
           min={ this.state.timeline.minDateValue }
           max={ this.state.timeline.maxDateValue }
           value={ this.state.timelineCursorPos }
           onInput={ this.timelineDrag.bind(this) } />
-        <span style="position: fixed; right: 0; top: 0; z-index: 99;">{ (new Date(this.state.timelineCursorPos)).toString() }</span>
+        <span className="timeline-indicator" style={{ top: `${this.state.cursorPos}px` }}>{ moment(this.state.timelineCursorPos).format('MMM Do YYYY') }</span>
         <div className="timeline-wrapper">
           {
             this.state.reviews.map(review => (
@@ -75,7 +77,9 @@ export default class MainApp extends Component {
         return document.body.clientHeight * (this.state.timeline.maxDateValue - sourcePos) / (this.state.timeline.maxDateValue - this.state.timeline.minDateValue);
       }
       case 'timeline': {
-        return this.state.timeline.maxDateValue - (this.state.timeline.maxDateValue - this.state.timeline.minDateValue) * (sourcePos / document.body.clientHeight);
+        const timelinePos = this.state.timeline.maxDateValue - (this.state.timeline.maxDateValue - this.state.timeline.minDateValue) * (sourcePos / document.body.clientHeight);
+        // this.setState({ cursorPos: timelinePos });
+        return timelinePos;
       }
     }
   }
