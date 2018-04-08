@@ -2,14 +2,29 @@ import Koa from 'koa';
 import Router from 'koa-router';
 import serve from 'koa-static';
 import { createReadStream } from 'fs';
+import bodyParser from 'koa-bodyparser';
+import onerror from 'koa-onerror';
 import serverConfig from './config/server.config'
 
-const app = new Koa();
-const router = new Router();
+import WebsiteMetasApi from './api/WebsiteMetaApi';
 
+const app = new Koa();
+onerror(app);
+app.use(bodyParser());
+
+const router = new Router();
 router
   .get('/crawler_callback', (ctx, next) => {
     ctx.body = ctx.request.query;
+    next();
+  })
+  .post('/api/website_meta', (ctx, next) => {
+    const urls = ctx.request.body;
+    WebsiteMetasApi.getMetas(urls)
+      .then(res => {
+        ctx.body = res;
+        next();
+      });
   })
   .get('/*', (ctx, next) => {
     ctx.type = 'html';
