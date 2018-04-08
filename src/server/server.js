@@ -18,13 +18,11 @@ router
     ctx.body = ctx.request.query;
     next();
   })
-  .post('/api/website_meta', (ctx, next) => {
+  .post('/api/website_meta', async (ctx, next) => {
     const urls = ctx.request.body;
-    WebsiteMetasApi.getMetas(urls)
-      .then(res => {
-        ctx.body = res;
-        next();
-      });
+    const websiteMetas = await WebsiteMetasApi.getMetas(urls);
+    ctx.status = 200;
+    ctx.body = websiteMetas;
   })
   .get('/*', (ctx, next) => {
     ctx.type = 'html';
