@@ -5,7 +5,7 @@ import { createReadStream } from 'fs';
 import bodyParser from 'koa-bodyparser';
 import serverConfig from './config/server.config'
 
-import WebsiteMetasApi from './api/WebsiteMetaApi';
+import WebsiteMetaApi from './api/WebsiteMetaApi';
 
 const app = new Koa();
 app.use(bodyParser());
