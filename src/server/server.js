@@ -3,13 +3,11 @@ import Router from 'koa-router';
 import serve from 'koa-static';
 import { createReadStream } from 'fs';
 import bodyParser from 'koa-bodyparser';
-import onerror from 'koa-onerror';
 import serverConfig from './config/server.config'
 
 import WebsiteMetasApi from './api/WebsiteMetaApi';
 
 const app = new Koa();
-onerror(app);
 app.use(bodyParser());
 
 const router = new Router();
@@ -20,7 +18,8 @@ router
   })
   .post('/api/website_meta', async (ctx, next) => {
     const urls = ctx.request.body;
-    const websiteMetas = await WebsiteMetasApi.getMetas(urls);
+    const websiteMetaApi = new WebsiteMetaApi();
+    const websiteMetas = await websiteMetaApi.getMetas(urls);
     ctx.status = 200;
     ctx.body = websiteMetas;
   })

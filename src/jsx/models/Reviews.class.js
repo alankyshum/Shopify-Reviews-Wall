@@ -1,5 +1,6 @@
 import Dexie from 'dexie';
 import Sessions from '../util/Sessions.class';
+import WebsiteMeta from './WebsiteMeta.class';
 
 export default class Reviews {
   constructor() {
@@ -24,6 +25,10 @@ export default class Reviews {
       resultReviewsList = resultReviewsList.filter(record => !!record.date);
       this.cacheDB(resultReviewsList);
     }
+
+    const websiteMeta = new WebsiteMeta();
+    websiteMeta.saveMetas(resultReviewsList.map(review => review.storeHref));
+    // push to client with socket when ready
 
     return sorted ? this.sortReviewRecords(resultReviewsList) : resultReviewsList;
   }
