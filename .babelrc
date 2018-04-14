@@ -1,5 +1,6 @@
 {
   "presets": [
     ["env", { "targets": { "node": "current" } }]
-  ]
+  ],
+  "sourceMaps": "inline"
 }
