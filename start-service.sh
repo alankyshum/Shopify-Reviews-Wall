@@ -1,4 +1,5 @@
 #!/bin/bash
-npm install
-npm --prefix /app run build
-npm --prefix /app start
+yarn install
+yarn --cwd /app build
+yarn --cwd /app migrate direct
+yarn --cwd /app start

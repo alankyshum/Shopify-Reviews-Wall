@@ -1,4 +1,10 @@
 #!/bin/bash
+if [ $1 = 'direct' ]; then
+    echo 'Direct Migration'
+    node_modules/.bin/sequelize db:migrate
+    exit
+fi
+
 PS3="Select Sequelize migrations operations (Enter anything else for help): "
 options=("Migrate" "Create Migration" "Check Status" "Quit")
 select opt in "${options[@]}"
