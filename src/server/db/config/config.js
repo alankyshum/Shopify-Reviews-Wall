@@ -14,9 +14,9 @@ const configPresets = {
     dialectOptions: {
       ssl: {
         reuqire: true,
-        key: fs.readFileSync(path.resolve(`${__dirname}/../ssl/client-key.key`)),
-        cert: fs.readFileSync(path.resolve(`${__dirname}/../ssl/client-cert.crt`)),
-        ca: fs.readFileSync(path.resolve(`${__dirname}/../ssl/server-ca.pem`))
+        key: fs.readFileSync(path.resolve(`${__dirname}/../../ssl/client-key.key`)),
+        cert: fs.readFileSync(path.resolve(`${__dirname}/../../ssl/client-cert.crt`)),
+        ca: fs.readFileSync(path.resolve(`${__dirname}/../../ssl/server-ca.pem`))
       },
     }
   }
