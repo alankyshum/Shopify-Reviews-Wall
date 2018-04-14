@@ -6,5 +6,6 @@ export const frontend = {
 };
 
 export const backend = {
-  presets: [ 'es2015', 'stage-0' ]
+  presets: [ 'es2015', 'stage-0' ],
+  sourceMaps: "inline"
 };

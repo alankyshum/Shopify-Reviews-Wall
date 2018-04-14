@@ -20,6 +20,15 @@ export function up(queryInterface, Sequelize) {
     store_description: {
       allowNull: false,
       type: Sequelize.STRING,
+    },
+    // required by sequelize
+    createdAt: {
+      allowNull: false,
+      type: Sequelize.DATE
+    },
+    updatedAt: {
+      allowNull: false,
+      type: Sequelize.DATE
     }
   })
 }
