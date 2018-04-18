@@ -1,6 +1,7 @@
 import { render, Component } from 'inferno';
 import moment from 'moment';
 import Reviews from '../models/Reviews.class';
+import WebsiteMeta from '../models/WebsiteMeta.class';
 import '../../scss/components/RawData.scss';
 
 export default class MyComponent extends Component {
@@ -38,7 +39,10 @@ export default class MyComponent extends Component {
   }
   async getReviewItems() {
     const review = new Reviews();
+    const websiteMeta = new WebsiteMeta();
+
     const reviewsList = await review.getAll();
+    websiteMeta.saveMetas(reviewsList); // async save
     return reviewsList;
   }
   filterByPeriod(reviewItems, period) {

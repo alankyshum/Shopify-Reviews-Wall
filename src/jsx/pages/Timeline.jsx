@@ -78,7 +78,6 @@ export default class MainApp extends Component {
   }
   getMonthHeadingPositionOnScrollbar(positionOnSourceWrapper) {
     const sourceWrapperHeight = this.timeline.wrapperElement.getClientRects()[0].height;
-    console.log(positionOnSourceWrapper, sourceWrapperHeight);
     return positionOnSourceWrapper / sourceWrapperHeight * 100;
   }
 }

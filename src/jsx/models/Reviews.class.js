@@ -26,10 +26,6 @@ export default class Reviews {
       this.cacheDB(resultReviewsList);
     }
 
-    const websiteMeta = new WebsiteMeta();
-    websiteMeta.saveMetas(resultReviewsList.map(review => review.storeHref));
-    // push to client with socket when ready
-
     return sorted ? this.sortReviewRecords(resultReviewsList) : resultReviewsList;
   }
 
