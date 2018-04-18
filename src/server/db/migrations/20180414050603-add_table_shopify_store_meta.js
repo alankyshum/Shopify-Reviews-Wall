@@ -17,6 +17,10 @@ export function up(queryInterface, Sequelize) {
       allowNull: false,
       type: Sequelize.STRING,
     },
+    store_og_thumbnail: {
+      allowNull: false,
+      type: Sequelize.STRING,
+    },
     store_description: {
       allowNull: false,
       type: Sequelize.STRING,

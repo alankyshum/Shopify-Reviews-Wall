@@ -1,6 +1,6 @@
 node_modules
 js
 css
-/api
-/db
-/server.js
+api
+db
+server.js

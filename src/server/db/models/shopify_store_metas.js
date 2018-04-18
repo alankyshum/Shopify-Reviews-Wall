@@ -1,33 +1,27 @@
 export default function(sequelize, DataTypes) {
   const shopify_store_metas = sequelize.define('shopify_store_metas', {
     store_name: DataTypes.STRING,
-    store_url: DataTypes.STRING,
     store_description: DataTypes.STRING,
+    store_url: DataTypes.STRING,
+    store_og_thumbnail: DataTypes.STRING,
   });
 
-  shopify_store_metas.cacheStockDetails = function(stockDetails) {
-    const uniqueIDs = Array.from(new Set(stockDetails.map(d => d.urlID)));
+  shopify_store_metas.cacheMetas = cacheMetas;
 
-    return this.findAll({ attributes: ['robinhood_id'] })
-      .then(existingIDArray => {
-        existingIDArray = existingIDArray.map(existingID => existingID.get('robinhood_id'));
-        console.log(existingIDArray);
+  function cacheMetas(storeMetas) {
+    const modeData = parseToModel(storeMetas);
+    console.log(modeData);
+    return shopify_store_metas.bulkCreate(storeMetas, {});
+    // ^ has issue with getting store_name
+  }
 
-        const newStockDetails = stockDetails
-          .filter(detail => {
-            console.log(detail.urlID, !existingIDArray.includes(detail.urlID))
-            return !existingIDArray.includes(detail.urlID)
-          })
-          .map(detail => ({
-            robinhood_id: detail.details.id,
-            name: detail.details.name,
-            simple_name: detail.details.simple_name,
-            symbol: detail.details.symbol,
-            country: detail.details.country,
-          }));
-
-        return shopify_store_metas.bulkCreate(newStockDetails);
-      });
+  function parseToModel(metaInfoList) {
+    return metaInfoList.map(metaInfo => ({
+      store_name: metaInfo.title,
+      store_description: metaInfo.description,
+      store_url: metaInfo.url,
+      store_og_thumbnail: metaInfo.image,
+    }));
   }
 
   return shopify_store_metas;
