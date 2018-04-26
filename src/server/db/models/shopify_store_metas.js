@@ -10,9 +10,14 @@ export default function(sequelize, DataTypes) {
 
   function cacheMetas(storeMetas) {
     const modeData = parseToModel(storeMetas);
-    console.log(modeData);
-    return shopify_store_metas.bulkCreate(storeMetas, {});
-    // ^ has issue with getting store_name
+    return shopify_store_metas.bulkCreate(modeData, {})
+      .then(insertionResult => insertionResult)
+      .catch(e => {
+        const ignoredErrors = ['SequelizeUniqueConstraintError'];
+        if (ignoredErrors.includes(e.name)) return;
+
+        console.error(e);
+      });
   }
 
   function parseToModel(metaInfoList) {
