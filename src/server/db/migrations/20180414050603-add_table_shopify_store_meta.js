@@ -23,7 +23,7 @@ export function up(queryInterface, Sequelize) {
     },
     store_description: {
       allowNull: false,
-      type: Sequelize.STRING,
+      type: Sequelize.TEXT,
     },
     // required by sequelize
     createdAt: {
