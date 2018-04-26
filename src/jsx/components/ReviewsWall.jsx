@@ -16,9 +16,6 @@ export default class MyComponent extends Component {
   render() {
     return (
       <div uk-grid>
-        {
-          this.state.loading ? <h1>Loading</h1> : ''
-        }
         {this.state.reviewItems.map(reviewItem => (
           <div class="uk-card uk-card-default uk-card-body uk-width-1-2@l uk-width-1-1@s">
             <div class="uk-card-badge uk-label">{ reviewItem.ratings }</div>
@@ -39,10 +36,7 @@ export default class MyComponent extends Component {
   }
   async getReviewItems() {
     const review = new Reviews();
-    const websiteMeta = new WebsiteMeta();
-
     const reviewsList = await review.getAll();
-    websiteMeta.saveMetas(reviewsList); // async save
     return reviewsList;
   }
   filterByPeriod(reviewItems, period) {
