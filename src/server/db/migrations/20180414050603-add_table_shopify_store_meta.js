@@ -18,11 +18,11 @@ export function up(queryInterface, Sequelize) {
       type: Sequelize.STRING,
     },
     store_og_thumbnail: {
-      allowNull: false,
+      allowNull: true,
       type: Sequelize.STRING,
     },
     store_description: {
-      allowNull: false,
+      allowNull: true,
       type: Sequelize.TEXT,
     },
     // required by sequelize
