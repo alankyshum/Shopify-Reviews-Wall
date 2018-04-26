@@ -2,6 +2,7 @@ import { Component } from 'inferno';
 import moment from 'moment';
 import Reviews from '../models/Reviews.class';
 import '../../scss/pages/Timeline.scss';
+import WebsiteMeta from '../models/WebsiteMeta.class';
 
 export default class MainApp extends Component {
   constructor(props) {
@@ -65,9 +66,12 @@ export default class MainApp extends Component {
   }
   setReviewList() {
     const reviews = new Reviews();
+    const websiteMeta = new WebsiteMeta();
+
     reviews.getAll()
       .then(reviewItems => {
         this.setState({ reviews: reviewItems });
+        websiteMeta.saveMetas(reviewItems);
       })
   }
   formatMonthHeadingTimestamp(date) {
