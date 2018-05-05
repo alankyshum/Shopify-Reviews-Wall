@@ -46,7 +46,7 @@ export default class MainApp extends Component {
             })
           }
         </div>
-        <div className="timeline-scrollbar" style={ {position: 'fixed', top: 0, right: 0} }>
+        {/* <div className="timeline-scrollbar" style={ {position: 'fixed', top: 0, right: 0} }>
           {
             Object.entries(this.timeline.monthHeadingsPositions).map(monthHeading => {
               const positionStyle = {
@@ -57,7 +57,7 @@ export default class MainApp extends Component {
               )
             })
           }
-        </div>
+        </div> */}
       </div>
     );
   }
