@@ -4,10 +4,10 @@ import serve from 'koa-static';
 import { createReadStream } from 'fs';
 import bodyParser from 'koa-bodyparser';
 import serverConfig from './config/server.config'
-
 import WebsiteMetaApi from './api/WebsiteMetaApi';
 
 const app = new Koa();
+const websiteMetaApi = new WebsiteMetaApi();
 app.use(bodyParser());
 
 const router = new Router();
@@ -18,10 +18,15 @@ router
   })
   .post('/api/website_meta', async (ctx, next) => {
     const urls = ctx.request.body;
-    const websiteMetaApi = new WebsiteMetaApi();
     const websiteMetas = await websiteMetaApi.getMetas(urls);
     ctx.status = 200;
     ctx.body = websiteMetas;
+  })
+  .get('/api/website_meta/:count', async (ctx, next) => {
+    const countLimit = ctx.params.count;
+    const cachedWebsiteMetas = await websiteMetaApi.getCachedMetas(countLimit);
+    ctx.status = 200;
+    ctx.body = cachedWebsiteMetas;
   })
   .get('/*', (ctx, next) => {
     ctx.type = 'html';

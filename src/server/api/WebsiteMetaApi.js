@@ -22,4 +22,7 @@ export default class WebsiteMetaApi {
     this.shopify_store_metas.cacheMetas(metaResults);
     return metaResults;
   }
+  getCachedMetas(countLimit) {
+    return this.shopify_store_metas.getCachedMetas(countLimit);
+  }
 }

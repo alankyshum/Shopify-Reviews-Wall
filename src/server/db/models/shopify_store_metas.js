@@ -7,6 +7,7 @@ export default function(sequelize, DataTypes) {
   });
 
   shopify_store_metas.cacheMetas = cacheMetas;
+  shopify_store_metas.getCachedMetas = getCachedMetas;
 
   function cacheMetas(storeMetas) {
     const modeData = parseToModel(storeMetas);
@@ -18,6 +19,12 @@ export default function(sequelize, DataTypes) {
 
         console.error(e);
       });
+  }
+
+  function getCachedMetas(countLimit) {
+    return shopify_store_metas.findAll({
+      limit: countLimit,
+    });
   }
 
   function parseToModel(metaInfoList) {

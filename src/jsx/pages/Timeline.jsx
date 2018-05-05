@@ -64,15 +64,13 @@ export default class MainApp extends Component {
   componentWillMount() {
     this.setReviewList();
   }
-  setReviewList() {
+  async setReviewList() {
     const reviews = new Reviews();
-    const websiteMeta = new WebsiteMeta();
+    const reviewItems = await reviews.getAll();
+    this.setState({ reviews: reviewItems });
 
-    reviews.getAll()
-      .then(reviewItems => {
-        this.setState({ reviews: reviewItems });
-        websiteMeta.saveMetas(reviewItems);
-      })
+    const websiteMeta = new WebsiteMeta();
+    websiteMeta.getMetas(reviewItems);
   }
   formatMonthHeadingTimestamp(date) {
     return moment(date).format('MM-YYYY');
