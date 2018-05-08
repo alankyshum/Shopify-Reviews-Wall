@@ -28,26 +28,33 @@ export default class MainApp extends Component {
     );
   }
   async componentWillMount() {
-    const randomReview = await this.getRandomReview();
-    this.setState({ review: randomReview });
+    const allReviews = await this.getRandomReview();
+
+    setInterval(async () => {
+      const randomReview = await this.getRandomReviewMeta(allReviews);
+      this.setState({ review: randomReview });
+    }, 1000);
   }
   async getRandomReview() {
     const reviews = new Reviews();
+    const reviewItems = await reviews.getAll();
+    return reviewItems;
+  }
+  async getRandomReviewMeta(reviewList) {
     const websiteMeta = new WebsiteMeta();
 
-    const reviewItems = await reviews.getAll();
-    // const review = reviewItems[454]; // debugging
-    const randomIndex = Math.floor(Math.random() * reviewItems.length);
-    const review = reviewItems[randomIndex];
+    const randomIndex = Math.floor(Math.random() * reviewList.length);
+    const randomReview = reviewList[randomIndex];
     const storeMetas = await websiteMeta.getMetas({
       attributes: ['store_name', 'store_description', 'store_url', 'store_og_thumbnail'],
-      where: { store_url: review.storeHref }
+      where: { store_url: randomReview.storeHref }
     });
+
     return {
-      author: review.author,
-      content: review.content,
-      ratings: review.ratings,
-      href: review.storeHref,
+      author: randomReview.author,
+      content: randomReview.content,
+      ratings: randomReview.ratings,
+      href: randomReview.storeHref,
       description: storeMetas && storeMetas[0].store_description,
       storeName: storeMetas && storeMetas[0].store_name,
       thumbnail: storeMetas && storeMetas[0].store_og_thumbnail,
