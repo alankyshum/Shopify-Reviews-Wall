@@ -13,7 +13,6 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-es2015-rollup": "^3.0.0",
-    "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
     "dotenv": "^5.0.1",
     "eslint": "^4.19.1",
@@ -30,6 +29,7 @@
     "sequelize-cli": "^4.0.0"
   },
   "dependencies": {
+    "babel-preset-stage-0": "^6.24.1",
     "dexie": "^2.0.2",
     "grabity": "^1.0.4",
     "inferno": "^4.0.7",

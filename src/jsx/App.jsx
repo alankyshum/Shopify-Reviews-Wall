@@ -5,6 +5,7 @@ import NavLinkLi from './components/NavLinkLi';
 import HomeWall from "./pages/HomeWall";
 import RawData from "./pages/RawData";
 import Timeline from "./pages/Timeline";
+import DisplayWall from "./pages/DisplayWall";
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
                 <NavLinkLi activeClassName="uk-active" to="/">Home</NavLinkLi>
                 <NavLinkLi activeClassName="uk-active" to="/raw">Raw Reviews</NavLinkLi>
                 <NavLinkLi activeClassName="uk-active" to="/timeline">Live Feed</NavLinkLi>
+                <NavLinkLi activeClassName="uk-active" to="/display-wall">Random Reviews Wall</NavLinkLi>
               </ul>
             </div>
           </nav>
@@ -25,6 +27,7 @@ class App extends Component {
             <Route exact path="/" component={HomeWall} />
             <Route exact path="/raw" component={RawData} />
             <Route exact path="/timeline" component={Timeline} />
+            <Route exact path="/display-wall" component={DisplayWall} />
           </div>
         </div>
       </BrowserRouter>

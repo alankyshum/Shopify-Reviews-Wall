@@ -4,14 +4,15 @@ export default class WebsiteMeta {
       websiteMetaApi: '/api/website_meta'
     };
   }
-  async getMetas(reviewList) {
-    const currentViewCount = 10;
-    const getMetasAPI = await fetch(`${this.url.websiteMetaApi}/${currentViewCount}`, {
+  async getMetas(queryCondition = {}) {
+    const query = JSON.stringify(queryCondition);
+    const getMetasAPI = await fetch(`${this.url.websiteMetaApi}?qs=${query}`, {
       method: 'get',
       headers: {
         'Content-Type': 'application/json'
       }
     });
+    return getMetasAPI.json();
   }
   async saveMetas(reviewList) {
     const websiteHrefHash = reviewList.map(review => ({

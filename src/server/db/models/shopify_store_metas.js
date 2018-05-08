@@ -21,10 +21,8 @@ export default function(sequelize, DataTypes) {
       });
   }
 
-  function getCachedMetas(countLimit) {
-    return shopify_store_metas.findAll({
-      limit: countLimit,
-    });
+  function getCachedMetas(queryCondition) {
+    return shopify_store_metas.findAll(queryCondition);
   }
 
   function parseToModel(metaInfoList) {

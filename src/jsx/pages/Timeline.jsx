@@ -70,7 +70,7 @@ export default class MainApp extends Component {
     this.setState({ reviews: reviewItems });
 
     const websiteMeta = new WebsiteMeta();
-    websiteMeta.getMetas(reviewItems);
+    websiteMeta.getMetas({ limit: 10 });
   }
   formatMonthHeadingTimestamp(date) {
     return moment(date).format('MM-YYYY');

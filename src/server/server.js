@@ -22,9 +22,11 @@ router
     ctx.status = 200;
     ctx.body = websiteMetas;
   })
-  .get('/api/website_meta/:count', async (ctx, next) => {
-    const countLimit = ctx.params.count;
-    const cachedWebsiteMetas = await websiteMetaApi.getCachedMetas(countLimit);
+  .get('/api/website_meta', async (ctx, next) => {
+    console.log(ctx.request.query);
+
+    const queryCondition = JSON.parse(ctx.request.query.qs);
+    const cachedWebsiteMetas = await websiteMetaApi.getCachedMetas(queryCondition);
     ctx.status = 200;
     ctx.body = cachedWebsiteMetas;
   })

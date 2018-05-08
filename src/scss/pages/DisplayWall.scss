@@ -1,0 +1,64 @@
+// layouting
+.display-wall {
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+  left: 0;
+  top: 0;
+  position: fixed;
+
+  .content {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    padding: 30px;
+  }
+
+  .background {
+    position: absolute;
+    z-index: 0;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    filter: blur(60px);
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+// text styles
+.display-wall {
+  .content {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    padding-left: 50px;
+    padding-right: 50px;
+    text-align: center;
+    height: 100vh;
+
+    &-author {
+      text-align: center;
+    }
+    &-body {
+      font-size: 1rem;
+    }
+    &-body {
+      font-size: 3rem;
+    }
+    &-logo {
+      margin-top: 1rem;
+      object-fit: contain;
+      max-width: 70vw;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+}
